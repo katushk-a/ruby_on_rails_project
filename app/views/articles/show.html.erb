@@ -1,7 +1,11 @@
 <h1><%= @article.title %></h1>
 
 <p><%= @article.body %></p>
-
+<% if @article.author.present? %>
+  Author: <%= link_to @article.author.full_name, author_path(@article.author) %>
+<% else %>
+  Author: Unknown
+<% end %>
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li><%= link_to "Destroy", article_path(@article), data: {
