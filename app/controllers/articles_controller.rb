@@ -11,10 +11,12 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @authors = Author.all
   end
 
   def create
     @article = Article.new(article_params)
+    authors = Author.all
 
     if @article.save
       redirect_to @article
@@ -45,7 +47,7 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def article_params
-      params.require(:article).permit(:title, :body, :status)
-    end
+  def article_params
+    params.require(:article).permit(:title, :body, :author_id, :status)
+  end
 end

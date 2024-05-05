@@ -1,0 +1,13 @@
+<h1>Authors</h1>
+
+Our blog has <%= Author.count %> authors and counting!
+
+<ul>
+  <% @authors.each do |author| %>
+      <li>
+        <%= link_to author.full_name, author %>
+      </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Author", new_author_path %>
